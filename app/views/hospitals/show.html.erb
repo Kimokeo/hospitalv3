@@ -1,0 +1,24 @@
+<h1>Hospital Data</h1>
+
+
+
+	<br>
+<strong>Hospital: </strong><%= @hospital.name %>
+	<br>
+<strong>City: </strong><%= @hospital.city %>
+	<br>
+<strong>Address: </strong><%= @hospital.address %>
+	<br>
+<strong>Description: </strong><%= @hospital.description %>
+	<br>
+	<br>
+<%= link_to "Add Patient", new_hospital_patient_path(@hospital) %>
+<%= link_to "Patient Directory", hospital_patients_path(@hospital) %>
+	<br>
+   		
+
+
+
+	
+	<%= link_to "Back", hospitals_path %>
+	<%= link_to "Home", root_path %>

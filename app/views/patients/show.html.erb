@@ -1,0 +1,19 @@
+<h1>Patient Data</h1>
+
+<strong>Name: </strong>
+	<%= @patient.first_name %><%= @patient.last_name %>
+	<br>
+<strong>Date of Birth: </strong><%= @patient.dob %>
+	<br>
+<strong>Gender: </strong><%= @patient.gender %>
+	<br>
+<strong>Blood Type: </strong><%= @patient.blood_type %>
+	<br>
+<strong>Description: </strong><%= @patient.description %>
+	<br>
+<strong>Medications: </strong>
+	<% @medications.each do |medication| %>
+ <%= medication.name %> <%= medication.dose %>
+ <% end %>
+	<br>
+	<%= link_to "Home", hospitals_path %>

@@ -1,0 +1,14 @@
+	%strong Doctor database
+	%br
+	- @doctors.each do |doctor|
+	%br
+	Doctor Name:
+	= doctor.name
+	%br
+	Specialization:
+	= doctor.doctoring_type
+	%br
+	= link_to "View Doctor", doctor_path(doctor)
+	%br
+
+	= link_to "Add Doctor", new_doctor_path
