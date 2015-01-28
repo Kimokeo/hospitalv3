@@ -1,5 +1,5 @@
 
-= form_for [@hospital, @patient, @medications] do |f|
+= form_for [@medication] do |f| 
 	= f.label :name
 	= f.text_field :name
 	%br
@@ -7,12 +7,4 @@
 	= f.text_field :dose
 	%br
 	= f.submit
-
-
-- if flash[:notice]
-	%p id="notice"><%= flash[:notice]
-
-
-- if flash[:error]
-	%p id="error"><%= flash[:error]
 

@@ -1,0 +1,32 @@
+%strong Patients Directory
+
+- @patients.each do |patient|
+  %br
+  %a Hospital ID:
+  = patient.hospital_id
+  %br
+  = patient.first_name
+  = patient.last_name
+  %br
+  = patient.dob
+  %br
+  = patient.description
+  %br
+  = patient.gender
+  %br
+  = patient.blood_type
+  %br
+  %a Current Medications:
+  - patient.medications.each do |medication|
+    = medication.name
+    = medication.dose
+    %br
+  %br
+  = link_to 'Show Medications', medications_path
+  %br
+  = link_to 'Edit', edit_patient_path(patient)
+  = link_to 'Destroy', patient, method: :delete, data: { confirm: 'Are you sure?' } 
+  %br
+
+%br
+  = link_to 'Back', hospitals_path

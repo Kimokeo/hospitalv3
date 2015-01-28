@@ -1,42 +1,38 @@
 class PatientsController < ApplicationController
 	def index
-		@hospital = Hospital.find params[:hospital_id]
 		@patients = Patient.all
 	end
 
 	def new
-		@hospital = Hospital.find params[:hospital_id]
-		@patient = @hospital.patients.new
+		@patient = Patient.new
 	end
 
 	def create
-		@hospital = Hospital.find params[:hospital_id]
-		@patient = @hospital.patients.create que_params
-	if @patient.save
-    	flash[:notice] = 'Patient data was successfully created.'
-    	redirect_to hospital_path(@hospital)
-    else
-    	flash[:error] = "Patient data was NOT saved."
-    	render :new
-	end
 
+		@patient = Patient.create que_params
+		if @patient.save
+			flash[:notice] = 'Patient data was successfully created.'
+			redirect_to patients_path
+		else
+			flash[:error] = "Patient data was NOT saved."
+			render :new
+		end
 	end
 
 	def edit
-		@hospital = Hospital.find params[:hospital_id]
 		@patient = Patient.find params[:id]
 	end
 
 	def update
 		@patient = Patient.find params[:id]
 		@patient.update_attributes que_params
-	if @patient.save
-    	flash[:notice] = 'Patient data was successfully created.'
-    	redirect_to root_path
-    else
-    	flash[:error] = "Patient data was NOT saved."
-    	render :new
-    end
+		if @patient.save
+			flash[:notice] = 'Patient data was successfully created.'
+			redirect_to root_path
+		else
+			flash[:error] = "Patient data was NOT saved."
+			render :new
+		end
 
 	end
 
@@ -49,20 +45,20 @@ class PatientsController < ApplicationController
 
 	def destroy
 		@patient = Patient.find params[:id]
-		@patient.delete
-		redirect_to root_path
+		@patient.destroy
+		redirect_to hospitals_path
 	end
 
-private
+	private
 	def que_params
 		params.require(:patient).permit(
-    	:first_name,
-    	:last_name,
-    	:dob,
-    	:description,
-    	:gender,
-    	:blood_type,
-)
+			:first_name,
+			:last_name,
+			:dob,
+			:description,
+			:gender,
+			:blood_type,
+			)
 	end
 end
 
