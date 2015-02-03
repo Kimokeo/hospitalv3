@@ -1,7 +1,9 @@
 source 'https://rubygems.org'
-
+gem 'therubyracer'
+gem "less-rails"
 gem 'bootstrap'
 gem 'twitter-bootstrap-rails'
+gem 'workflow'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use sqlite3 as the database for Active Record

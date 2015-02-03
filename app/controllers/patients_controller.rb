@@ -1,4 +1,16 @@
 class PatientsController < ApplicationController
+	before_action :set_patient, only: [
+		:show,
+		:edit,
+		:update,
+		:destroy,
+		:waiting_room_patient,
+		:checkup_patient,
+    :xray_patient,
+    :surgery_patient,
+		:billing_patient,
+		:discharged_patient,
+	]
 	def index
 		@patients = Patient.all
 	end
@@ -49,6 +61,36 @@ class PatientsController < ApplicationController
 		redirect_to hospitals_path
 	end
 
+	def wait_patient
+		@patient.wait!
+		redirect_to patients_path
+	end
+
+	def exam_patient
+		@patient.exam!
+		redirect_to patients_path
+	end
+
+	def scan_patient
+		@patient.scan!
+		redirect_to patients_path
+	end
+
+	def operation_patient
+		@patient.operation!
+		redirect_to patients_path
+	end
+
+	def checkout_patient
+		@patient.checkout!
+		redirect_to patients_path
+	end
+
+	def leave_patient
+		@patient.leave!
+		redirect_to patients_path
+	end
+
 	private
 	def que_params
 		params.require(:patient).permit(
@@ -60,5 +102,10 @@ class PatientsController < ApplicationController
 			:blood_type,
 			)
 	end
+
+	def set_patient
+		@patient = Patient.find(params[:id])
+	end
+
 end
 

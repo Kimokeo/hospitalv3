@@ -1,6 +1,7 @@
 %strong Patients Directory
 
 - @patients.each do |patient|
+  = patient.workflow_state
   %br
   %a Hospital ID:
   = patient.hospital_id
@@ -27,6 +28,28 @@
   = link_to 'Edit', edit_patient_path(patient)
   = link_to 'Destroy', patient, method: :delete, data: { confirm: 'Are you sure?' } 
   %br
+    - if patient.wait?
+      = link_to "exam", checkup_patient_patient_path(patient), method: :patch
+      = link_to "scan", xray_patient_patient_path(patient), method: :patch
+      = link_to "operation", surgery_patient_patient_path(patient), method: :patch
+      = link_to "leave", discharged_patient_patient_path(patient), method: :patch
+    - if patient.exam?
+      = link_to "scan", xray_patient_patient_path(patient), method: :patch
+      = link_to "checkout", billing_patient_patient_path(patient), method: :patch
+      = link_to "leave", discharged_patient_patient_path(patient), method: :patch
+    - if patient.scan?
+      = link_to "operation", surgery_patient_patient_path(patient), method: :patch
+      = link_to "checkout", billing_patient_patient_path(patient), method: :patch
+      = link_to "leave", discharged_patient_patient_path(patient), method: :patch
+    - if patient.operation?
+      = link_to "exam", checkup_patient_patient_path(patient), method: :patch
+      = link_to "checkout", billing_patient_patient_path(patient), method: :patch
+      = link_to "leave", discharged_patient_patient_path(patient), method: :patch
+    - if patient.checkout?
+      = link_to "leave", discharged_patient_patient_path(patient), method: :patch
+
+
+
 
 %br
   = link_to 'Back', hospitals_path

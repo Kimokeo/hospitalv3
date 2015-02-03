@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'home#index'
+
   resources :hospitals do
     member do
 
@@ -13,12 +14,20 @@ Rails.application.routes.draw do
 
   resources :patients do
     member do 
-
       post :create_doctor
+      patch :waiting_room_patient
+      patch :checkup_patient
+      patch :xray_patient
+      patch :surgery_patient
+      patch :billing_patient
+      patch :discharged_patient
     end
   end
-      resources :medications
 
+  resources :medications
+  resources :doctors
+
+end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -68,4 +77,4 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-end
+
