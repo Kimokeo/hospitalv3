@@ -9,10 +9,14 @@ class PatientsController < ApplicationController
     :xray_patient,
     :surgery_patient,
 		:billing_patient,
-		:discharged_patient,
+		:discharged_patient
 	]
 	def index
-		@patients = Patient.all
+		@patients = if !params[:q].blank?
+			Patient.where("first_name LIKE ? OR description Like ?", "%#{params[:q]}%", "%#{params[:q]}%")
+		else
+			Patient.all
+		end.shuffle
 	end
 
 	def new
@@ -61,32 +65,32 @@ class PatientsController < ApplicationController
 		redirect_to hospitals_path
 	end
 
-	def wait_patient
+	def waiting_room_patient
 		@patient.wait!
 		redirect_to patients_path
 	end
 
-	def exam_patient
+	def checkup_patient
 		@patient.exam!
 		redirect_to patients_path
 	end
 
-	def scan_patient
+	def xray_patient
 		@patient.scan!
 		redirect_to patients_path
 	end
 
-	def operation_patient
+	def surgery_patient
 		@patient.operation!
 		redirect_to patients_path
 	end
 
-	def checkout_patient
+	def billing_patient
 		@patient.checkout!
 		redirect_to patients_path
 	end
 
-	def leave_patient
+	def discharged_patient
 		@patient.leave!
 		redirect_to patients_path
 	end

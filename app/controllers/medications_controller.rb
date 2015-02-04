@@ -1,6 +1,10 @@
 class MedicationsController < ApplicationController
 	def index
-		@medications = Medication.all
+		@medications = if !params[:q].blank?
+			Medication.where("name LIKE ? OR dose Like ?", "%#{params[:q]}%", "%#{params[:q]}%")
+		else
+			Medication.all
+		end.shuffle
 	end
 
 	def new

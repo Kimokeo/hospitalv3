@@ -1,55 +1,59 @@
 %strong Patients Directory
 
-- @patients.each do |patient|
-  = patient.workflow_state
-  %br
-  %a Hospital ID:
-  = patient.hospital_id
-  %br
-  = patient.first_name
-  = patient.last_name
-  %br
-  = patient.dob
-  %br
-  = patient.description
-  %br
-  = patient.gender
-  %br
-  = patient.blood_type
-  %br
-  %a Current Medications:
-  - patient.medications.each do |medication|
-    = medication.name
-    = medication.dose
-    %br
-  %br
-  = link_to 'Show Medications', medications_path
-  %br
-  = link_to 'Edit', edit_patient_path(patient)
-  = link_to 'Destroy', patient, method: :delete, data: { confirm: 'Are you sure?' } 
-  %br
-    - if patient.wait?
-      = link_to "exam", checkup_patient_patient_path(patient), method: :patch
-      = link_to "scan", xray_patient_patient_path(patient), method: :patch
-      = link_to "operation", surgery_patient_patient_path(patient), method: :patch
-      = link_to "leave", discharged_patient_patient_path(patient), method: :patch
-    - if patient.exam?
-      = link_to "scan", xray_patient_patient_path(patient), method: :patch
-      = link_to "checkout", billing_patient_patient_path(patient), method: :patch
-      = link_to "leave", discharged_patient_patient_path(patient), method: :patch
-    - if patient.scan?
-      = link_to "operation", surgery_patient_patient_path(patient), method: :patch
-      = link_to "checkout", billing_patient_patient_path(patient), method: :patch
-      = link_to "leave", discharged_patient_patient_path(patient), method: :patch
-    - if patient.operation?
-      = link_to "exam", checkup_patient_patient_path(patient), method: :patch
-      = link_to "checkout", billing_patient_patient_path(patient), method: :patch
-      = link_to "leave", discharged_patient_patient_path(patient), method: :patch
-    - if patient.checkout?
-      = link_to "leave", discharged_patient_patient_path(patient), method: :patch
-
-
-
-
 %br
-  = link_to 'Back', hospitals_path
+
+= form_tag patients_path, method: :get, class: "navbar-form", role: "search" do
+  .input-group
+    = text_field_tag 'q', params[:q], class: "form-control", id: "srch-term", placeholder: "Search"
+    .input-group-btn
+      %button.btn.btn-default{:style => "width:40px;"}
+        %i.glyphicon.glyphicon-search
+%br
+
+
+- @patients.each do |patient|
+  %li.patientsclass{ class: patient_current_state?(patient)}
+    = patient.workflow_state
+    %br
+    %a Hospital ID:
+    = patient.hospital_id
+    %br
+    = patient.first_name
+    = patient.last_name
+    %br
+    = patient.dob
+    %br
+    = patient.description
+    %br
+    = patient.gender
+    %br
+    = patient.blood_type
+    %br
+    = link_to 'Show Medications', medications_path
+    %br
+    = link_to 'Edit', edit_patient_path(patient)
+    = link_to 'Destroy', patient, method: :delete, data: { confirm: 'Are you sure?' } 
+    %br
+    - if patient.waiting_room?
+      = link_to "exam", checkup_patient_patient_path(patient), method: :patch
+      = link_to "scan", xray_patient_patient_path(patient), method: :patch
+      = link_to "operation", surgery_patient_patient_path(patient), method: :patch
+      = link_to "leave", discharged_patient_patient_path(patient), method: :patch
+    - if patient.checkup?
+      = link_to "scan", xray_patient_patient_path(patient), method: :patch
+      = link_to "checkout", billing_patient_patient_path(patient), method: :patch
+      = link_to "leave", discharged_patient_patient_path(patient), method: :patch
+    - if patient.xray?
+      = link_to "operation", surgery_patient_patient_path(patient), method: :patch
+      = link_to "checkout", billing_patient_patient_path(patient), method: :patch
+      = link_to "leave", discharged_patient_patient_path(patient), method: :patch
+    - if patient.surgery?
+      = link_to "exam", checkup_patient_patient_path(patient), method: :patch
+      = link_to "checkout", billing_patient_patient_path(patient), method: :patch
+      = link_to "leave", discharged_patient_patient_path(patient), method: :patch
+    - if patient.billing?
+      = link_to "leave", discharged_patient_patient_path(patient), method: :patch
+      %br
+
+= link_to 'Back', hospitals_path
+%br
