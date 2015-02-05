@@ -1,5 +1,4 @@
 %strong Patients Directory
-
 %br
 
 = form_tag patients_path, method: :get, class: "navbar-form", role: "search" do
@@ -12,10 +11,12 @@
 
 
 - @patients.each do |patient|
-  %li.patientsclass{ class: patient_current_state?(patient)}
+  %ul.patientsclass{ class: patient_current_state?(patient)}
+    %br
+    %strong Current status: 
     = patient.workflow_state
     %br
-    %a Hospital ID:
+    %strong Hospital ID:
     = patient.hospital_id
     %br
     = patient.first_name
@@ -29,10 +30,9 @@
     %br
     = patient.blood_type
     %br
-    = link_to 'Show Medications', medications_path
-    %br
-    = link_to 'Edit', edit_patient_path(patient)
-    = link_to 'Destroy', patient, method: :delete, data: { confirm: 'Are you sure?' } 
+    = link_to 'Medications', medications_path, class: 'btn btn-primary btn-sm'
+    = link_to 'Edit', edit_patient_path(patient), class: "btn btn-info btn-sm"
+    = link_to 'Destroy', patient, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm'
     %br
     - if patient.waiting_room?
       = link_to "exam", checkup_patient_patient_path(patient), method: :patch
@@ -57,3 +57,5 @@
 
 = link_to 'Back', hospitals_path
 %br
+
+= will_paginate @patientpag

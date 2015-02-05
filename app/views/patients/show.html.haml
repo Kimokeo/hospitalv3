@@ -1,0 +1,23 @@
+%h1 Patient Data
+%strong Name:
+= @patient.first_name
+= @patient.last_name
+%br/
+%strong Date of Birth:
+= @patient.dob
+%br/
+%strong Gender:
+= @patient.gender
+%br/
+%strong Blood Type:
+= @patient.blood_type
+%br/
+%strong Description:
+= @patient.description
+%br/
+%strong Medications:
+- @medications.each do |medication|
+  = medication.name
+  = medication.dose
+%br/
+= link_to "Home", hospitals_path

@@ -1,0 +1,35 @@
+ 
+= form_for [@hospital, @patient] do |f|
+  - if @patrient.errors.any?
+    - @patient.errors.full_messages.each do |message|
+      %div{class: "error"}
+        = message
+  .form-group.half
+    = f.label :first_name
+    = f.text_field :first_name, class: "form-control first_name", id: "validate_first_name"
+    %br/
+  .form-group.half
+    = f.label :last_name
+    = f.text_field :last_name, class: "form-control last_name", id: "vaildate_last_name"
+    %br/
+  .form-group.half
+    = f.label :dob
+    = f.date_select :dob, :start_year=>1915,:end_year=>2005
+    %br/
+  .form-group.half
+    = f.label :gender
+    = f.radio_button(:gender, "male")
+    = f.label(:gender, "male" )
+    = f.radio_button(:gender, "female")
+    = f.label(:gender, "female" )
+    %br/
+  .form-group.half
+    = f.label :description
+    = f.text_field :description, class: "form-control description", id: "validate_description"
+    %br/
+  .form-group.half
+    = f.label :blood_type
+    = f.select :blood_type, options_for_select(Patient::BLOOD_TYPE_OPTIONS),
+        include_blank: "select"
+    %br/
+    = f.submit "Submit", class: "btn btn-primary disabled submit-things"
