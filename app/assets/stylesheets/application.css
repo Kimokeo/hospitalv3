@@ -20,3 +20,46 @@
 .half {
 	width: 25%;
 }
+
+.patientsclass {
+	min-height: 225px;
+}
+
+#header.navbar-default .navbar-brand {
+    color: rgba(255, 255, 255, 1);
+}
+#header.navbar-default {
+    font-size: 16px;
+    background-color: rgba(51, 122, 183, 1);
+    border-width: 1px;
+    border-radius: 4px;
+}
+#header.navbar-default .navbar-nav>li>a {
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(248, 248, 248, 0);
+}
+#header.navbar-default .navbar-nav>li>a:hover,
+#header.navbar-default .navbar-nav>li>a:focus {
+    color: rgba(51, 51, 51, 1);
+    background-color: rgba(248, 248, 248, 0);
+}
+#header.navbar-default .navbar-nav>.active>a,
+#header.navbar-default .navbar-nav>.active>a:hover,
+#header.navbar-default .navbar-nav>.active>a:focus {
+    color: rgba(85, 85, 85, 1);
+    background-color: rgba(231, 231, 231, 1);
+}
+#header.navbar-default .navbar-toggle {
+    border-color: #ddd;
+}
+#header.navbar-default .navbar-toggle:hover,
+#header.navbar-default .navbar-toggle:focus {
+    background-color: #ddd;
+}
+#header.navbar-default .navbar-toggle .icon-bar {
+    background-color: #888;
+}
+#header.navbar-default .navbar-toggle:hover .icon-bar,
+#header.navbar-default .navbar-toggle:focus .icon-bar {
+    background-color: #337ab7;
+}

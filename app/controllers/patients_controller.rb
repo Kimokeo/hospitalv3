@@ -12,12 +12,12 @@ class PatientsController < ApplicationController
 		:discharged_patient
 	]
 	def index
+		@patientpag = Patient.paginate(:page => params[:page], :per_page => 8)
 		@patients = if !params[:q].blank?
 			Patient.where("first_name LIKE ? OR description Like ?", "%#{params[:q]}%", "%#{params[:q]}%")
 		else
 			Patient.all
-		end.shuffle
-		@patientpag = Patient.paginate(:page => params[:page], :per_page => 30)
+		end
 	end
 
 	def new

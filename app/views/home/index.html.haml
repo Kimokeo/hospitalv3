@@ -1,12 +1,9 @@
 %head
   %link{:href => "font-awesome/css/font-awesome.min.css", :rel => "stylesheet", :type => "text/css"}/
   %link{:href => "http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic", :rel => "stylesheet", :type => "text/css"}/
-  / HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
-  / WARNING: Respond.js doesn't work if you view the page via file://
-  /[if lt IE 9]
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-  / Navigation
+
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 %body
   %a#menu-toggle.btn.btn-dark.btn-lg.toggle{:href => "#"}
     %i.fa.fa-bars
@@ -43,10 +40,7 @@
             Photography courtesy of
             = succeed "." do
               %a{:href => "http://join.deathtothestockphoto.com/", :target => "_blank"} Death to the Stock Photo
-      / /.row
-    / /.container
-  / Services
-  / The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/
+
   %section#services.services.bg-primary
     .container
       .row.text-center
@@ -97,31 +91,31 @@
   / Callout
   %aside.callout
     .text-vertical-center
-      %h1 Vertically Centered Text
+      %h1 Promoting Synergy
   / Portfolio
   %section#portfolio.portfolio
     .container
       .row
         .col-lg-10.col-lg-offset-1.text-center
-          %h2 Our Work
+          %h2 Our Professionals
           %hr.small/
           .row
             .col-md-6
               .portfolio-item
                 %a{:href => "#"}
-                  %img.img-portfolio.img-responsive{:src => "/assets/portfolio-1.jpg"}/
+                  %img.img-portfolio.img-responsive{:src => "/assets/doctor.jpg"}/
             .col-md-6
               .portfolio-item
                 %a{:href => "#"}
-                  %img.img-portfolio.img-responsive{:src => "/assets/portfolio-2.jpg"}/
+                  %img.img-portfolio.img-responsive{:src => "/assets/nurse.jpg"}/
             .col-md-6
               .portfolio-item
                 %a{:href => "#"}
-                  %img.img-portfolio.img-responsive{:src => "/assets/portfolio-3.jpg"}/
+                  %img.img-portfolio.img-responsive{:src => "/assets/surgeon.jpg"}/
             .col-md-6
               .portfolio-item
                 %a{:href => "#"}
-                  %img.img-portfolio.img-responsive{:src => "/assets/portfolio-4.jpg"}/
+                  %img.img-portfolio.img-responsive{:src => "/assets/dre.jpg"}/
           / /.row (nested)
           %a.btn.btn-dark{:href => "#"} View More Items
         / /.col-lg-10
@@ -137,21 +131,21 @@
           %a.btn.btn-lg.btn-dark{:href => "#"} Me too!
   / Map
   %section#contact.map
-    %iframe{:frameborder => "0", :height => "100%", :marginheight => "0", :marginwidth => "0", :scrolling => "no", :src => "https://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&aq=0&oq=twitter&sll=28.659344,-81.187888&sspn=0.128789,0.264187&ie=UTF8&hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&t=m&z=15&iwloc=A&output=embed", :width => "100%"}
+    %iframe{:frameborder => "0", :height => "100%", :marginheight => "0", :marginwidth => "0", :scrolling => "no", :src => "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6707.641307625007!2d-79.87137922347733!3d32.79701436932748!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x8947268711cf05b6!2sThe+Iron+Yard+-+Charleston!5e0!3m2!1sen!2sus!4v1423251099704", :height => "500px", :width => "100%"}
     %br/
     %small
-      %a{:href => "https://maps.google.com/maps?f=q&source=embed&hl=en&geocode=&q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&aq=0&oq=twitter&sll=28.659344,-81.187888&sspn=0.128789,0.264187&ie=UTF8&hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&t=m&z=15&iwloc=A"}
+      %a{:href => "https://www.google.com/maps/place/The+Iron+Yard+-+Charleston/@32.7970144,-79.8713792,16z/data=!4m2!3m1!1s0x0:0x8947268711cf05b6"}
   / Footer
   %footer
     .container
       .row
         .col-lg-10.col-lg-offset-1.text-center
           %h4
-            %strong Start Bootstrap
+            %strong Health Matters
           %p
-            3481 Melrose Place
+            510 mill st
             %br>/
-            Beverly Hills, CA 90210
+            Mt Plesant, SC 29464
           %ul.list-unstyled
             %li
               %i.fa.fa-phone.fa-fw

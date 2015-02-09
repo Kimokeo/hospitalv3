@@ -185,7 +185,7 @@ hr.small {
     width: 100%;
     height: 400px;
     color: #fff;
-    background: url(/assets/callout.jpg) no-repeat center center scroll;
+    background: url(/assets/team.jpg) no-repeat center center scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -200,10 +200,13 @@ hr.small {
 
 .portfolio-item {
     margin-bottom: 30px;
+
 }
 
 .img-portfolio {
     margin: 0 auto;
+    width: 500px;
+    height: 350px;
 }
 
 .img-portfolio:hover {

@@ -1,0 +1,17 @@
+#header.navbar.navbar-default{:role => "navigation"}
+  .container-fluid
+    .navbar-header
+      %a.navbar-brand{:href => "/"} Health Matters
+      %button.navbar-toggle{"data-target" => ".navbar-menubuilder", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+    .collapse.navbar-collapse.navbar-menubuilder
+      %ul.nav.navbar-nav.navbar-left
+        %li
+          %a{:href => "/hospitals"} Hospitals
+        %li
+          %a{:href => "/patients"} Patients
+        %li
+          %a{:href => "#"} Contact Us

@@ -1,6 +1,6 @@
  
 = form_for [@hospital, @patient] do |f|
-  - if @patrient.errors.any?
+  - if @patient.errors.any?
     - @patient.errors.full_messages.each do |message|
       %div{class: "error"}
         = message
