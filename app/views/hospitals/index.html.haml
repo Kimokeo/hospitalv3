@@ -10,13 +10,19 @@
         %i.glyphicon.glyphicon-search
 %br
 - @hospitals.each do |hospital|
-  = hospital.name
-  = hospital.city
-  = hospital.address
-  = hospital.description
-  = link_to 'Show', hospital_path(hospital)
-  = link_to 'Edit', edit_hospital_path(hospital)
-  = link_to 'Destroy', hospital, method: :delete, data: { confirm: 'Are you sure?' }
+  .col-md-4
+    .well.well-sm
+      .ul
+        = hospital.name
+        %br
+        = hospital.city
+        = hospital.address
+        %br
+        = hospital.description
+        %br
+        = link_to 'Show', hospital_path(hospital), class: 'btn btn-primary btn-sm'
+        = link_to 'Edit', edit_hospital_path(hospital), class:  "btn btn-info btn-sm"
+        = link_to 'Destroy', hospital, method: :delete, data: { confirm: 'Are you sure?' }, class:  'btn btn-danger btn-sm'
   %br
 %br
   = link_to "New Hospital", new_hospital_path

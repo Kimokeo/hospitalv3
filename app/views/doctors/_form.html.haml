@@ -1,16 +1,16 @@
-	= form_for @doctor do |f|
-		= f.label :name
-		= f.text_field :name
+= form_for @doctor do |f|
+	= f.label :name
+	= f.text_field :name
+	%br
+	= f.label :doctoring_type
+	= f.text_field :doctoring_type
+	%br
+	Works at:
+	- @hospitals.each do |d|
+		= check_box_tag 'doctor[hospital_ids][]', p.id, @doctor.hospitals.include?(p)
+		= p.name
 		%br
-		= f.label :doctoring_type
-		= f.text_field :doctoring_type
-		%br
-		Works at:
-		- @hospitals.each do |d|
-			= check_box_tag 'doctor[hospital_ids][]', p.id, @doctor.hospitals.include?(p)
-			= p.name
-			%br
-		= f.submit
-		%br
+	= f.submit
+	%br
 
-	= link_to "back", doctors_path
+= link_to "back", doctors_path

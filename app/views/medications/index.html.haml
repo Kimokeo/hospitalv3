@@ -1,4 +1,4 @@
-= link_to 'Add Medication', new_medication_path
+= render 'header'
 
 %br
 
@@ -18,4 +18,5 @@
     = link_to 'Destroy', medication, method: :delete, data: { confirm: 'Are you sure?' }
     %br
   %br
+    = link_to 'Add Medication', new_medication_path
     = link_to 'Back', patients_path

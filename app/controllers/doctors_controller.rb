@@ -36,6 +36,8 @@ private
 			:name,
 			:doctoring_type,
 			:doctoring_id,
-			:patient_ids: [],
-			:hospital_ids: []
+			:patient_id,
+			:hospital_id
 			)
+	end
+end
