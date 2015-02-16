@@ -9,6 +9,7 @@ class DoctorsController < ApplicationController
 
 	def new
 		@hospitals = Hospital.all
+		@hospital = Hospital.find params[:id]
 		@patients = Patient.all
 		@doctor = Doctor.new
 	end
