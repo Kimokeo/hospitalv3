@@ -12,7 +12,7 @@ class PatientsController < ApplicationController
 		:discharged_patient
 	]
 	def index
-		@patientpag = Patient.paginate(:page => params[:page], :per_page => 12)
+		@patientpag = Patient.paginate(:per_page => 12, :page => params[:page])
 		@patients = if !params[:q].blank?
 			Patient.where("first_name LIKE ? OR description Like ?", "%#{params[:q]}%", "%#{params[:q]}%")
 		else
@@ -25,7 +25,6 @@ class PatientsController < ApplicationController
 	end
 
 	def create
-
 		@patient = Patient.create que_params
 		if @patient.save
 			flash[:notice] = 'Patient data was successfully created.'
@@ -64,6 +63,14 @@ class PatientsController < ApplicationController
 		@patient = Patient.find params[:id]
 		@patient.destroy
 		redirect_to hospitals_path
+	end
+
+	def search_results
+		@patients = Patient.where("first_name LIKE ? OR description Like ?", "%#{params[:q]}%", "%#{params[:q]}%")
+		respond_to do |format|
+			format.js
+			format.html
+		end
 	end
 
 	def waiting_room_patient

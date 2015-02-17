@@ -22,6 +22,9 @@ Rails.application.routes.draw do
       patch :billing_patient
       patch :discharged_patient
     end
+    collection do 
+      get :search_results
+    end
   end
 
   resources :medications
