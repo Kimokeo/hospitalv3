@@ -1,10 +1,9 @@
 %head
   %title Health Matters Database
-  %link{:href => "font-awesome/css/font-awesome.min.css", :rel => "stylesheet", :type => "text/css"}/
-  %link{:href => "http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic", :rel => "stylesheet", :type => "text/css"}/
-  %script{:src => "https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"}
-  %script{:src => "https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"}
-
+  %link{:href => "font-awesome/css/font-awesome.min.css", :rel => "stylesheet", :type => "text/css"}
+    %link{:href => "http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic", :rel => "stylesheet", :type => "text/css"}
+      %script{:src => "https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"}
+      %script{:src => "https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"}
 %body
   %a#menu-toggle.btn.btn-dark.btn-lg.toggle{:href => "#"}
     %i.fa.fa-bars
@@ -29,8 +28,8 @@
     .text-vertical-center
       %h1 Health Matters Database
       %h3 catch phrase or quote goes here
-      %br/
-      %a.btn.btn-dark.btn-lg{:href => "#about"} Find Out More
+      %br
+        %a.btn.btn-dark.btn-lg{:href => "#about"} Find Out More
   / About
   %section#about.about
     .container
@@ -39,53 +38,50 @@
           %h2 Simplify blah blah buzzwords blah blah
           %p.lead
             Photography courtesy of
-            = succeed "." do
-              %a{:href => "http://join.deathtothestockphoto.com/", :target => "_blank"} Death to the Stock Photo
-
   %section#services.services.bg-primary
     .container
       .row.text-center
         .col-lg-10.col-lg-offset-1
           %h2 Our Services
-          %hr.small/
-          .row
-            .col-md-3.col-sm-6
-              .service-item
-                %span.fa-stack.fa-4x
-                  %i.fa.fa-circle.fa-stack-2x
-                  %i.fa.fa-cloud.fa-stack-1x.text-primary
-                %h4
-                  %strong Hospital Listings
-                %p Review our partners in Healthcare
-                %a.btn.btn-light{:href => "hospitals"} Learn More
-            .col-md-3.col-sm-6
-              .service-item
-                %span.fa-stack.fa-4x
-                  %i.fa.fa-circle.fa-stack-2x
-                  %i.fa.fa-compass.fa-stack-1x.text-primary
-                %h4
-                  %strong Doctor Directory
-                %p Directory of current health professionals and affiliates
-                %a.btn.btn-light{:href => "#"} Learn More
-            .col-md-3.col-sm-6
-              .service-item
-                %span.fa-stack.fa-4x
-                  %i.fa.fa-circle.fa-stack-2x
-                  %i.fa.fa-flask.fa-stack-1x.text-primary
-                %h4
-                  %strong Patients Database
-                %p Tracking information for current and past patients
-                %a.btn.btn-light{:href => "patients"} Learn More
-            .col-md-3.col-sm-6
-              .service-item
-                %span.fa-stack.fa-4x
-                  %i.fa.fa-circle.fa-stack-2x
-                  %i.fa.fa-shield.fa-stack-1x.text-primary
-                %h4
-                  %strong Medication tracker
-                %p Admin Required
-                %a.btn.btn-light{:href => "#"} Learn More
-          / /.row (nested)
+          %hr.small
+            .row
+              .col-md-3.col-sm-6
+                .service-item
+                  %span.fa-stack.fa-4x
+                    %i.fa.fa-circle.fa-stack-2x
+                    %i.fa.fa-cloud.fa-stack-1x.text-primary
+                  %h4
+                    %strong Hospital Listings
+                  %p Review our partners in Healthcare
+                  %a.btn.btn-light{:href => "hospitals"} Learn More
+              .col-md-3.col-sm-6
+                .service-item
+                  %span.fa-stack.fa-4x
+                    %i.fa.fa-circle.fa-stack-2x
+                    %i.fa.fa-compass.fa-stack-1x.text-primary
+                  %h4
+                    %strong Doctor Directory
+                  %p Directory of current health professionals and affiliates
+                  %a.btn.btn-light{:href => "#"} Learn More
+              .col-md-3.col-sm-6
+                .service-item
+                  %span.fa-stack.fa-4x
+                    %i.fa.fa-circle.fa-stack-2x
+                    %i.fa.fa-flask.fa-stack-1x.text-primary
+                  %h4
+                    %strong Patients Database
+                  %p Tracking information for current and past patients
+                  %a.btn.btn-light{:href => "patients"} Learn More
+              .col-md-3.col-sm-6
+                .service-item
+                  %span.fa-stack.fa-4x
+                    %i.fa.fa-circle.fa-stack-2x
+                    %i.fa.fa-shield.fa-stack-1x.text-primary
+                  %h4
+                    %strong Medication tracker
+                  %p Admin Required
+                  %a.btn.btn-light{:href => "#"} Learn More
+            / /.row (nested)
         / /.col-lg-10
       / /.row
     / /.container
@@ -99,26 +95,26 @@
       .row
         .col-lg-10.col-lg-offset-1.text-center
           %h2 Our Professionals
-          %hr.small/
-          .row
-            .col-md-6
-              .portfolio-item
-                %a{:href => "#"}
-                  %img.img-portfolio.img-responsive{:src => "/assets/doctor.jpg"}/
-            .col-md-6
-              .portfolio-item
-                %a{:href => "#"}
-                  %img.img-portfolio.img-responsive{:src => "/assets/nurse.jpg"}/
-            .col-md-6
-              .portfolio-item
-                %a{:href => "#"}
-                  %img.img-portfolio.img-responsive{:src => "/assets/surgeon.jpg"}/
-            .col-md-6
-              .portfolio-item
-                %a{:href => "#"}
-                  %img.img-portfolio.img-responsive{:src => "/assets/dre.jpg"}/
-          / /.row (nested)
-          %a.btn.btn-dark{:href => "#"} View More Items
+          %hr.small
+            .row
+              .col-md-6
+                .portfolio-item
+                  %a{:href => "#"}
+                    %img.img-portfolio.img-responsive{:src => "/assets/doctor.jpg"}
+              .col-md-6
+                .portfolio-item
+                  %a{:href => "#"}
+                    %img.img-portfolio.img-responsive{:src => "/assets/nurse.jpg"}
+              .col-md-6
+                .portfolio-item
+                  %a{:href => "#"}
+                    %img.img-portfolio.img-responsive{:src => "/assets/surgeon.jpg"}
+              .col-md-6
+                .portfolio-item
+                  %a{:href => "#"}
+                    %img.img-portfolio.img-responsive{:src => "/assets/dre.jpg"}
+            / /.row (nested)
+            %a.btn.btn-dark{:href => "#"} View More Items
         / /.col-lg-10
       / /.row
     / /.container
@@ -132,10 +128,10 @@
           %a.btn.btn-lg.btn-dark{:href => "#"} Me too!
   / Map
   %section#contact.map
-    %iframe{:frameborder => "0", :height => "100%", :marginheight => "0", :marginwidth => "0", :scrolling => "no", :src => "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6707.641307625007!2d-79.87137922347733!3d32.79701436932748!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x8947268711cf05b6!2sThe+Iron+Yard+-+Charleston!5e0!3m2!1sen!2sus!4v1423251099704", :height => "500px", :width => "100%"}
-    %br/
-    %small
-      %a{:href => "https://www.google.com/maps/place/The+Iron+Yard+-+Charleston/@32.7970144,-79.8713792,16z/data=!4m2!3m1!1s0x0:0x8947268711cf05b6"}
+    %iframe{:frameborder => "0", :height => "500px", :marginheight => "0", :marginwidth => "0", :scrolling => "no", :src => "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6707.641307625007!2d-79.87137922347733!3d32.79701436932748!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x8947268711cf05b6!2sThe+Iron+Yard+-+Charleston!5e0!3m2!1sen!2sus!4v1423251099704", :width => "100%"}
+    %br
+      %small
+        %a{:href => "https://www.google.com/maps/place/The+Iron+Yard+-+Charleston/@32.7970144,-79.8713792,16z/data=!4m2!3m1!1s0x0:0x8947268711cf05b6"}
   / Footer
   %footer
     .container
@@ -145,8 +141,8 @@
             %strong Health Matters
           %p
             510 mill st
-            %br>/
-            Mt Plesant, SC 29464
+            %br
+              Mt Plesant, SC 29464
           %ul.list-unstyled
             %li
               %i.fa.fa-phone.fa-fw
@@ -154,22 +150,24 @@
             %li
               %i.fa.fa-envelope-o.fa-fw
               %a{:href => "mailto:name@example.com"} name@example.com
-          %br/
-          %ul.list-inline
-            %li
-              %a{:href => "#"}
-                %i.fa.fa-facebook.fa-fw.fa-3x
-            %li
-              %a{:href => "#"}
-                %i.fa.fa-twitter.fa-fw.fa-3x
-            %li
-              %a{:href => "#"}
-                %i.fa.fa-dribbble.fa-fw.fa-3x
-          %hr.small/
-          %p.text-muted Copyright © Health-Matters 2015
+          %br
+            %ul.list-inline
+              %li
+                %a{:href => "#"}
+                  %i.fa.fa-facebook.fa-fw.fa-3x
+              %li
+                %a{:href => "#"}
+                  %i.fa.fa-twitter.fa-fw.fa-3x
+              %li
+                %a{:href => "#"}
+                  %i.fa.fa-dribbble.fa-fw.fa-3x
+            %hr.small
+              %p.text-muted Copyright © Health-Matters 2015
   / jQuery
   %script{:src => "js/jquery.js"}
   / Bootstrap Core JavaScript
   %script{:src => "js/bootstrap.min.js"}
   / Custom Theme JavaScript
-  %script{:src => "javascripts.home.js"}
+  %script{:src => "javascripts/home.js"}
+  / // Closes the sidebar menu
+  

@@ -1,0 +1,20 @@
+- if patient.waiting_room?
+  = link_to "exam", checkup_patient_patient_path(patient), method: :patch, class: 'btn btn-default btn-xs'
+  = link_to "scan", xray_patient_patient_path(patient), method: :patch, class: 'btn btn-default btn-xs'
+  = link_to "operation", surgery_patient_patient_path(patient), method: :patch, class: 'btn btn-default btn-xs'
+  = link_to "leave", discharged_patient_patient_path(patient), method: :patch, class: 'btn btn-default btn-xs'
+- if patient.checkup?
+  = link_to "scan", xray_patient_patient_path(patient), method: :patch, class: 'btn btn-default btn-xs'
+  = link_to "checkout", billing_patient_patient_path(patient), method: :patch, class: 'btn btn-default btn-xs'
+  = link_to "leave", discharged_patient_patient_path(patient), method: :patch, class: 'btn btn-default btn-xs'
+- if patient.xray?
+  = link_to "operation", surgery_patient_patient_path(patient), method: :patch, class: 'btn btn-default btn-xs'
+  = link_to "checkout", billing_patient_patient_path(patient), method: :patch, class: 'btn btn-default btn-xs'
+  = link_to "leave", discharged_patient_patient_path(patient), method: :patch, class: 'btn btn-default btn-xs'
+- if patient.surgery?
+  = link_to "exam", checkup_patient_patient_path(patient), method: :patch, class: 'btn btn-default btn-xs'
+  = link_to "checkout", billing_patient_patient_path(patient), method: :patch, class: 'btn btn-default btn-xs'
+  = link_to "leave", discharged_patient_patient_path(patient), method: :patch, class: 'btn btn-default btn-xs'
+- if patient.billing?
+  = link_to "leave", discharged_patient_patient_path(patient), method: :patch, class: 'btn btn-default btn-xs'
+%br

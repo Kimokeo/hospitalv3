@@ -31,5 +31,5 @@
     = f.label :blood_type
     = f.select :blood_type, options_for_select(Patient::BLOOD_TYPE_OPTIONS),
         include_blank: "select"
-    %br/
+    %br
     = f.submit "Submit", class: "btn btn-primary disabled submit-things"

@@ -22,9 +22,11 @@ class PatientsController < ApplicationController
 
 	def new
 		@patient = Patient.new
+		@hospitals = Hospital.all
 	end
 
 	def create
+		@hospitals = Hospital.all
 		@patient = Patient.create que_params
 		if @patient.save
 			flash[:notice] = 'Patient data was successfully created.'
@@ -53,7 +55,6 @@ class PatientsController < ApplicationController
 	end
 
 	def show
-		@hospital = Hospital.find params[:hospital_id]
 		@patient = Patient.find params[:id]
 		@medications = @patient.medications
 
@@ -76,31 +77,49 @@ class PatientsController < ApplicationController
 	def waiting_room_patient
 		@patient.wait!
 		redirect_to patients_path
+		respond_to do |format|
+			format.js
+		end
 	end
 
 	def checkup_patient
 		@patient.exam!
 		redirect_to patients_path
+		respond_to do |format|
+			format.js
+		end
 	end
 
 	def xray_patient
 		@patient.scan!
 		redirect_to patients_path
+		respond_to do |format|
+			format.js
+		end
 	end
 
 	def surgery_patient
 		@patient.operation!
 		redirect_to patients_path
+		respond_to do |format|
+			format.js
+		end
 	end
 
 	def billing_patient
 		@patient.checkout!
 		redirect_to patients_path
+		respond_to do |format|
+			format.js
+		end
 	end
 
 	def discharged_patient
 		@patient.leave!
 		redirect_to patients_path
+		respond_to do |format|
+			format.js
+    end
 	end
 
 	private
@@ -112,11 +131,14 @@ class PatientsController < ApplicationController
 			:description,
 			:gender,
 			:blood_type,
+			hospital_ids: [],
+      patient_ids: [],
+      medication_ids: [],
 			)
 	end
 
 	def set_patient
-		@patient = Patient.find(params[:id])
+		@patient = Patient.find params[:id]
 	end
 
 end

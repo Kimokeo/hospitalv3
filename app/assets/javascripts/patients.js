@@ -37,6 +37,68 @@ function validateForm(){
 //     return false;
 //   });
 // });
+
+
+$(document).on('click', '.wait', function(){
+  var patient_id = $(this).attr("patient_id");
+  var state = {workflow_state: "waiting_room"};
+  $.ajax({
+    type: 'PATCH',
+    url:'/patients/' + patient_id,
+    dataType: 'script'
+  });
+});
+
+$(document).on('click', '.exam', function(){
+  var patient_id = $(this).attr("patient_id");
+  var state = {workflow_state: "checkup"};
+  $.ajax({
+    type: 'PATCH',
+    url:'/patients/' + patient_id,
+    dataType: 'script'
+  });
+});
+
+$(document).on('click', '.scan', function(){
+  var patient_id = $(this).attr("patient_id");
+  var state = {workflow_state: "xray"};
+  $.ajax({
+    type: 'PATCH',
+    url:'/patients/' + patient_id,
+    dataType: 'script'
+  });
+});
+
+$(document).on('click', '.operation', function(){
+  var patient_id = $(this).attr("patient_id");
+  var state = {workflow_state: "surgery"};
+  $.ajax({
+    type: 'PATCH',
+    url:'/patients/' + patient_id,
+    dataType: 'script'
+  });
+});
+
+$(document).on('click', '.checkout', function(){
+  var patient_id = $(this).attr("billing");
+  var state = {workflow_state: "waiting_room"};
+  $.ajax({
+    type: 'PATCH',
+    url:'/patients/' + patient_id,
+    dataType: 'script'
+  });
+});
+
+$(document).on('click', '.leave', function(){
+  var patient_id = $(this).attr("patient_id");
+  var state = {workflow_state: "discharged"};
+  $.ajax({
+    type: 'PATCH',
+    url:'/patients/' + patient_id,
+    dataType: 'script'
+  });
+});
+
 console.log("hello");
 $(document).on('click', '.submit_search', function(){
   console.log("test")
