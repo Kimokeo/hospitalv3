@@ -22,11 +22,10 @@ class PatientsController < ApplicationController
 
 	def new
 		@patient = Patient.new
-		@hospitals = Hospital.all
 	end
 
 	def create
-		@hospitals = Hospital.all
+		@hospital = Hospital.all
 		@patient = Patient.create que_params
 		if @patient.save
 			flash[:notice] = 'Patient data was successfully created.'
@@ -38,7 +37,8 @@ class PatientsController < ApplicationController
 	end
 
 	def edit
-		@patient = Patient.find params[:id]
+		@hospital = Hospital.find params[:hospital_id]
+		@patient = @hospital.patient.find params[:id]
 	end
 
 	def update

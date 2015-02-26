@@ -8,8 +8,12 @@ Rails.application.routes.draw do
   resources :hospitals do
     member do
       post :create_doctor
+      resources :patients
     end
   end
+
+  resources :medications
+  resources :doctors
   resources :patients do
     member do 
       post :create_doctor
@@ -24,9 +28,6 @@ Rails.application.routes.draw do
     get :search_results
   end
 end
-
-  resources :medications
-  resources :doctors
 end
 
   # Example of regular route:

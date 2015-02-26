@@ -15,7 +15,7 @@
 	= @hospital.description
 	%br/
 	%br/
-	= link_to "Add Patient", new_patient_path(@hospital)
+	= link_to "Add Patient", new_patient_path(@hospital, @patient)
 	= link_to "Patient Directory", patients_path(@hospital)
 	%br/
 	= link_to "Back", hospitals_path
