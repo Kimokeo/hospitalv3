@@ -1,20 +1,20 @@
-- if patient.waiting_room?
-  = link_to "exam", checkup_patient_patient_path(patient), method: :patch, class: 'btn btn-default btn-xs'
-  = link_to "scan", xray_patient_patient_path(patient), method: :patch, class: 'btn btn-default btn-xs'
-  = link_to "operation", surgery_patient_patient_path(patient), method: :patch, class: 'btn btn-default btn-xs'
-  = link_to "leave", discharged_patient_patient_path(patient), method: :patch, class: 'btn btn-default btn-xs'
-- if patient.checkup?
-  = link_to "scan", xray_patient_patient_path(patient), method: :patch, class: 'btn btn-default btn-xs'
-  = link_to "checkout", billing_patient_patient_path(patient), method: :patch, class: 'btn btn-default btn-xs'
-  = link_to "leave", discharged_patient_patient_path(patient), method: :patch, class: 'btn btn-default btn-xs'
-- if patient.xray?
-  = link_to "operation", surgery_patient_patient_path(patient), method: :patch, class: 'btn btn-default btn-xs'
-  = link_to "checkout", billing_patient_patient_path(patient), method: :patch, class: 'btn btn-default btn-xs'
-  = link_to "leave", discharged_patient_patient_path(patient), method: :patch, class: 'btn btn-default btn-xs'
-- if patient.surgery?
-  = link_to "exam", checkup_patient_patient_path(patient), method: :patch, class: 'btn btn-default btn-xs'
-  = link_to "checkout", billing_patient_patient_path(patient), method: :patch, class: 'btn btn-default btn-xs'
-  = link_to "leave", discharged_patient_patient_path(patient), method: :patch, class: 'btn btn-default btn-xs'
-- if patient.billing?
-  = link_to "leave", discharged_patient_patient_path(patient), method: :patch, class: 'btn btn-default btn-xs'
+- if @patient.waiting_room?
+  = link_to "exam", 'javascript:void(0);', class: 'exam_patient' 'btn btn-default btn-xs', patient_id: @patient.id
+  = link_to "scan", 'javascript:void(0);', class: 'scan_patient' 'btn btn-default btn-xs', patient_id: @patient.id
+  = link_to "operation", 'javascript:void(0);', class: 'operation_patient' 'btn btn-default btn-xs', patient_id: @patient.id
+  = link_to "leave", 'javascript:void(0);', class: 'leave_patient' 'btn btn-default btn-xs', patient_id: @patient.id
+- if @patient.checkup?
+  = link_to "scan", 'javascript:void(0);', class: 'scan_patient' 'btn btn-default btn-xs', patient_id: @patient.id
+  = link_to "checkout", 'javascript:void(0);', class: 'checkout_patient' 'btn btn-default btn-xs', patient_id: @patient.id
+  = link_to "leave", 'javascript:void(0);', class: 'leave_patient' 'btn btn-default btn-xs', patient_id: @patient.id 
+- if @patient.xray?
+  = link_to "operation", 'javascript:void(0);', class: 'operation_patient' 'btn btn-default btn-xs', patient_id: @patient.id
+  = link_to "checkout", 'javascript:void(0);', class: 'checkout_patient' 'btn btn-default btn-xs', patient_id: @patient.id
+  = link_to "leave", 'javascript:void(0);', class: 'leave_patient' 'btn btn-default btn-xs', patient_id: @patient.id 
+- if @patient.surgery?
+  = link_to "exam", 'javascript:void(0);', class: 'exam_patient' 'btn btn-default btn-xs', patient_id: @patient.id
+  = link_to "checkout", 'javascript:void(0);', class: 'checkout_patient' 'btn btn-default btn-xs', patient_id: @patient.id
+  = link_to "leave", 'javascript:void(0);', class: 'leave_patient' 'btn btn-default btn-xs', patient_id: @patient.id 
+- if @patient.billing?
+  = link_to "leave", 'javascript:void(0);', class: 'leave_patient' 'btn btn-default btn-xs', patient_id: @patient.id 
 %br

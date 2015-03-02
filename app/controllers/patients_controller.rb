@@ -1,15 +1,9 @@
 class PatientsController < ApplicationController
-	before_action :set_patient, only: [
+	before_action :set_patient_id, only: [
 		:show,
 		:edit,
 		:update,
-		:destroy,
-		:waiting_room_patient,
-		:checkup_patient,
-    :xray_patient,
-    :surgery_patient,
-		:billing_patient,
-		:discharged_patient
+		:destroy
 	]
 	def index
 		@patientpag = Patient.paginate(:per_page => 12, :page => params[:page])
@@ -55,7 +49,6 @@ class PatientsController < ApplicationController
 	end
 
 	def show
-		@patient = Patient.find params[:id]
 		@medications = @patient.medications
 
 	end
@@ -74,7 +67,14 @@ class PatientsController < ApplicationController
 		end
 	end
 
-	def waiting_room_patient
+# ajax workflow state controllers
+
+	def set_patient_id
+		@patient = Patient.find params[:id]
+	end
+
+	def patient_waiting_room
+		set_patient_id
 		@patient.wait!
 		redirect_to patients_path
 		respond_to do |format|
@@ -82,7 +82,8 @@ class PatientsController < ApplicationController
 		end
 	end
 
-	def checkup_patient
+	def patient_checkup
+		set_patient_id
 		@patient.exam!
 		redirect_to patients_path
 		respond_to do |format|
@@ -90,7 +91,8 @@ class PatientsController < ApplicationController
 		end
 	end
 
-	def xray_patient
+	def patient_xray
+		set_patient_id
 		@patient.scan!
 		redirect_to patients_path
 		respond_to do |format|
@@ -98,7 +100,8 @@ class PatientsController < ApplicationController
 		end
 	end
 
-	def surgery_patient
+	def patient_surgery
+		set_patient_id
 		@patient.operation!
 		redirect_to patients_path
 		respond_to do |format|
@@ -106,7 +109,8 @@ class PatientsController < ApplicationController
 		end
 	end
 
-	def billing_patient
+	def patient_billing
+		set_patient_id
 		@patient.checkout!
 		redirect_to patients_path
 		respond_to do |format|
@@ -114,7 +118,8 @@ class PatientsController < ApplicationController
 		end
 	end
 
-	def discharged_patient
+	def patient_discharged
+		set_patient_id
 		@patient.leave!
 		redirect_to patients_path
 		respond_to do |format|
@@ -136,10 +141,5 @@ class PatientsController < ApplicationController
       medication_ids: [],
 			)
 	end
-
-	def set_patient
-		@patient = Patient.find params[:id]
-	end
-
 end
 

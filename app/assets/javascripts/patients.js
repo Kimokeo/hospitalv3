@@ -39,62 +39,62 @@ function validateForm(){
 // });
 
 
-$(document).on('click', '.wait', function(){
+$(document).on('click', '.waiting_room_patient', function(){
   var patient_id = $(this).attr("patient_id");
   var state = {workflow_state: "waiting_room"};
   $.ajax({
     type: 'PATCH',
-    url:'/patients/' + patient_id,
+    url:'/patients/' + 'patient_id' + '/waiting_room_patient',
     dataType: 'script'
   });
 });
 
-$(document).on('click', '.exam', function(){
+$(document).on('click', '.exam_patient', function(){
   var patient_id = $(this).attr("patient_id");
   var state = {workflow_state: "checkup"};
   $.ajax({
     type: 'PATCH',
-    url:'/patients/' + patient_id,
+    url:'/patients/' + 'patient_id' + '/checkup_patient',
     dataType: 'script'
   });
 });
 
-$(document).on('click', '.scan', function(){
+$(document).on('click', '.scan_patient', function(){
   var patient_id = $(this).attr("patient_id");
   var state = {workflow_state: "xray"};
   $.ajax({
     type: 'PATCH',
-    url:'/patients/' + patient_id,
+    url:'/patients/' + 'patient_id' + '/xray_patient',
     dataType: 'script'
   });
 });
 
-$(document).on('click', '.operation', function(){
+$(document).on('click', '.operation_patient', function(){
   var patient_id = $(this).attr("patient_id");
   var state = {workflow_state: "surgery"};
   $.ajax({
     type: 'PATCH',
-    url:'/patients/' + patient_id,
+    url:'/patients/' + 'patient_id' + '/surgery_patient',
     dataType: 'script'
   });
 });
 
-$(document).on('click', '.checkout', function(){
+$(document).on('click', '.checkout_patient', function(){
   var patient_id = $(this).attr("billing");
-  var state = {workflow_state: "waiting_room"};
+  var state = {workflow_state: "checkout"};
   $.ajax({
     type: 'PATCH',
-    url:'/patients/' + patient_id,
+    url:'/patients/' + 'patient_id' + '/billing_patient',
     dataType: 'script'
   });
 });
 
-$(document).on('click', '.leave', function(){
+$(document).on('click', '.leave_patient', function(){
   var patient_id = $(this).attr("patient_id");
   var state = {workflow_state: "discharged"};
   $.ajax({
     type: 'PATCH',
-    url:'/patients/' + patient_id,
+    url:'/patients/' + 'patient_id' + '/discharged_patient',
     dataType: 'script'
   });
 });
