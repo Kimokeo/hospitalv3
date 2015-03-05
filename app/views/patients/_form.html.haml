@@ -5,11 +5,11 @@
         = message
   .form-group.half
     = f.label :first_name
-    = f.text_field :first_name, class: "form-control first_name", id: "validate_first_name"
+    = f.text_field :first_name, class: "form-control validate_field", id: "validate_first_name"
     %br/
   .form-group.half
     = f.label :last_name
-    = f.text_field :last_name, class: "form-control last_name", id: "vaildate_last_name"
+    = f.text_field :last_name, class: "form-control validate_field", id: "vaildate_last_name"
     %br/
   .form-group.half
     = f.label :dob
@@ -24,11 +24,11 @@
     %br/
   .form-group.half
     = f.label :description
-    = f.text_field :description, class: "form-control description", id: "validate_description"
+    = f.text_field :description, class: "form-control validate_field", id: "validate_description"
     %br/
   .form-group.half
     = f.label :blood_type
     = f.select :blood_type, options_for_select(Patient::BLOOD_TYPE_OPTIONS),
         include_blank: "select"
     %br
-    = f.submit "Submit", class: "btn btn-primary disabled submit-things"
+    = f.submit "Submit", class: "submit-things"

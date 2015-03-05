@@ -8,26 +8,28 @@ Rails.application.routes.draw do
   resources :hospitals do
     member do
       post :create_doctor
+      delete :destroy_doctor
       resources :patients
     end
-  end
-
-  resources :medications
-  resources :doctors
-  resources :patients do
-    member do 
-      post :create_doctor
-      patch :waiting_room_patient
-      patch :checkup_patient
-      patch :xray_patient
-      patch :surgery_patient
-      patch :billing_patient
-      patch :discharged_patient
+    resources :patients do
+      member do 
+        post :create_doctor
+        delete :destroy_doctor
+        patch :waiting_room_patient
+        patch :checkup_patient
+        patch :xray_patient
+        patch :surgery_patient
+        patch :billing_patient
+        patch :discharged_patient
+      end
+    collection do 
+      get :search_results
+      end
     end
-  collection do 
-    get :search_results
   end
-end
+  resources :doctors
+  resources :medications
+  resources :patients
 end
 
   # Example of regular route:

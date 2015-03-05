@@ -1,5 +1,5 @@
 class PatientsController < ApplicationController
-	before_action :set_patient_id, only: [
+	before_action :set_patient_id, :set_hospital_id, only: [
 		:show,
 		:edit,
 		:update,
@@ -11,16 +11,17 @@ class PatientsController < ApplicationController
 			Patient.where("first_name LIKE ? OR description Like ?", "%#{params[:q]}%", "%#{params[:q]}%")
 		else
 			Patient.all
-		end
+		end.shuffle
 	end
 
 	def new
-		@patient = Patient.new
+		@hospital = Hospital.find params[:id]
+		@patient = @hospital.patients.new
 	end
 
 	def create
-		@hospital = Hospital.all
-		@patient = Patient.create que_params
+		@hospital = Hospital.find params[:id]
+		@patient = @hospital.patients.create que_params
 		if @patient.save
 			flash[:notice] = 'Patient data was successfully created.'
 			redirect_to patients_path
@@ -36,7 +37,8 @@ class PatientsController < ApplicationController
 	end
 
 	def update
-		@patient = Patient.find params[:id]
+		@hospital = Hospital.find params[:hospital_id]
+		@patient = @hospital.patient.find params[:id]
 		@patient.update_attributes que_params
 		if @patient.save
 			flash[:notice] = 'Patient data was successfully created.'
@@ -49,8 +51,9 @@ class PatientsController < ApplicationController
 	end
 
 	def show
+		# @hospital = Hospital.find params[:hospital_id]
+		# @patient = @hospital.patients.find params[:id]
 		@medications = @patient.medications
-
 	end
 
 	def destroy
@@ -71,6 +74,10 @@ class PatientsController < ApplicationController
 
 	def set_patient_id
 		@patient = Patient.find params[:id]
+	end
+
+	def set_hospital_id
+		@hospital = Hospital.find params[:id]
 	end
 
 	def patient_waiting_room
@@ -136,7 +143,6 @@ class PatientsController < ApplicationController
 			:description,
 			:gender,
 			:blood_type,
-			hospital_ids: [],
       patient_ids: [],
       medication_ids: [],
 			)

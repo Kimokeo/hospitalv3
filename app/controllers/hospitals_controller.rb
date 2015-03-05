@@ -1,4 +1,10 @@
 class HospitalsController < ApplicationController
+	before_action :set_hospital_id, only: [
+		:show,
+		:edit,
+		:update,
+		:destroy
+	]
 	def index
 		@hospitals = if !params[:q].blank?
 			Hospital.where("name LIKE ? OR description Like ?", "%#{params[:q]}%", "%#{params[:q]}%")
@@ -46,6 +52,10 @@ class HospitalsController < ApplicationController
 		@hospital = Hospital.find params[:id]
 		@hospital.delete
 		redirect_to root_path
+	end
+
+	def set_hospital_id
+		@hospital = Hospital.find params[:id]
 	end
 
 private

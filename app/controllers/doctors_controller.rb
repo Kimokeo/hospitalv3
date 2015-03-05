@@ -9,13 +9,13 @@ class DoctorsController < ApplicationController
 
 	def new
 		@hospitals = Hospital.all
-		@hospital = Hospital.find params[:id]
 		@patients = Patient.all
 		@doctor = Doctor.new
 	end
 
 	def create
 		@doctor = Doctor.create doc_params
+		@hospitals = Hospital.all
 		redirect_to doctor_path(@doctor)
 	end
 
@@ -36,9 +36,8 @@ private
 		params.require(:doctor).permit(
 			:name,
 			:doctoring_type,
-			:doctoring_id,
-			:patient_id,
-			:hospital_id
+			patient_ids: [],
+			hospital_ids: []
 			)
 	end
 end

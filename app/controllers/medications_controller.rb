@@ -1,5 +1,6 @@
 class MedicationsController < ApplicationController
 	def index
+		@patients = Patient.all
 		@medications = if !params[:q].blank?
 			Medication.where("name LIKE ? OR dose Like ?", "%#{params[:q]}%", "%#{params[:q]}%")
 		else
@@ -9,11 +10,13 @@ class MedicationsController < ApplicationController
 
 	def new
 		@medication = Medication.new
+		@patients = Patient.all
 	end
 
 	def create
 		@medication = Medication.create med_params
-		redirect_to patients_path
+		@patients = Patient.all
+		redirect_to medications_path
 	end
 
 	def edit
@@ -36,6 +39,7 @@ private
 		params.require(:medication).permit(
 			:name,
 			:dose,
+			patient_ids: []
 			)
 	end
 end

@@ -5,28 +5,59 @@
 
 
 $(document).ready(function(){
-  $('#submit-things').click(function(){
-    validateForm();
-  });
-  $('error').delay(2000).fadeOut();
-});
+  $('.submit-things').prop('disabled', true);
+  $('.validate_field').change(function(){
+    var first_name = $(".validate_field:first").val();
+    var last_name = $(".validate_field:last").val();
+    if (first_name != "" || last_name != "") {
+      $('.submit-things').prop('disabled', false);
+    }
+    if (first_name == "" || last_name == "") {
+      $('.submit-things').prop('disabled', true);
+    }
+  })
 
-function validateForm(){
+  $(".alert").fadeOut(6000);
+  $(".notice").fadeOut(6000);
 
-  var first_name = $('#validate_first_name').val();
-  var last_name = $('#validate_last_name').val();
-  var description = $('#validate_description').val();
+  var first_name = $('.validate_first_name').val();
+  var last_name = $('.validate_last_name').val();
+  var description = $('.validate_description').val();
   if (first_name == ""){
-    $('#validate_first_name').after('Name required')
+    $('.validate_first_name').after('Name required')
   }
   if (last_name == ""){
-    $('#validate_last_name').after('Yes, last name too')
+    $('.validate_last_name').after('Yes, last name too')
   }
   if (description == ""){
-    $('#validate_description').after('Description required')
-	}
+    $('.validate_description').after('Description required')
   }
+  
+  $('.validate_field').keyup(function(){
+    var  var first_name = $('.validate_first_name').val();
+    var last_name = $('.validate_last_name').val();
+    var description = $('.validate_description').val();
+    if (first_name == "") {
+      $('.validate_first_name').hide();
+    }
+    else {
+      $('.validate_first_name').show();
+    }
 
+    if (first_name == "") {
+      $('.validate_last_name').hide();
+    }
+    else {
+      $('.validate_last_name').show();
+    }
+
+    if (first_name == "") {
+      $('.validate_description').hide();
+    }
+    else {
+      $('.validate_description').show();
+    }
+  });
 // $(function() {
 //   $(".patients th a, .patients .pagination a").live("click", function() {
 //     $.getScript(this.href);
