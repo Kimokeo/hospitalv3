@@ -4,7 +4,7 @@
     %link{:href => "http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic", :rel => "stylesheet", :type => "text/css"}
       %script{:src => "https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"}
       %script{:src => "https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"}
-      %script{:src => "app/assets/javascripts/home.js", :rel => "javascript"}
+      %script{:src => "../app/assets/javascripts/home.js", :rel => "javascript"}
 
 %body
   %a#menu-toggle.btn.btn-dark.btn-lg.toggle{:href => "#"}
@@ -29,7 +29,7 @@
   %header#top.header
     .text-vertical-center
       %h1 Health Matters Database
-      %h3 catch phrase or quote goes here
+      %h3 Catch Phrase!
       %br
         %a.btn.btn-dark.btn-lg{:href => "#about"} Find Out More
   / About
@@ -37,9 +37,7 @@
     .container
       .row
         .col-lg-12.text-center
-          %h2 Simplify blah blah buzzwords blah blah
-          %p.lead
-            Photography courtesy of
+          %h2 Simplifying Buzzwords
   %section#services.services.bg-primary
     .container
       .row.text-center
@@ -73,7 +71,7 @@
                   %h4
                     %strong Patients Database
                   %p Tracking information for current and past patients
-                  %a.btn.btn-light{:href => "patients"} Learn More
+                  %a.btn.btn-light{:href => "hospitals"} Learn More
               .col-md-3.col-sm-6
                 .service-item
                   %span.fa-stack.fa-4x
@@ -165,7 +163,3 @@
                   %i.fa.fa-dribbble.fa-fw.fa-3x
             %hr.small
               %p.text-muted Copyright © Health-Matters 2015
-  / jQuery
-  %script{:src => "vendor/assets/js/jquery.js"}
-  / Bootstrap Core JavaScript
-  %script{:src => "vendor/assets/js/bootstrap.min.js"}
